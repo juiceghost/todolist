@@ -84,3 +84,69 @@ function renderNote(note) {
 
     //li.onclick = removeItem;
 }
+
+let bigList = [
+    {
+        "title": "aaa",
+        "text": {
+            "ops": [
+                {
+                    "insert": "aaaaa\n"
+                }
+            ]
+        },
+        "preview": "aaaaa\n",
+        "isStarred": "false",
+        "isDeleted": "false",
+        "id": 1574027714262,
+        "year": 2019,
+        "month": 10,
+        "date": 17,
+        "hours": 22,
+        "minutes": 55,
+        "seconds": 8
+    },
+    {
+        "title": "bbbbbbstar",
+        "text": {
+            "ops": [
+                {
+                    "insert": "bbbbb\n"
+                },
+                {
+                    "insert": "starbbbbb\n"
+                },
+            ]
+        },
+        "preview": "bbbbbbstar\n",
+        "isStarred": "false",
+        "isDeleted": "false",
+        "id": 1574027717863,
+        "year": 2019,
+        "month": 10,
+        "date": 17,
+        "hours": 22,
+        "minutes": 55,
+        "seconds": 8
+    },
+    {
+        "title": "ccc",
+        "text": {
+            "ops": [
+                {
+                    "insert": "cccccstartccccc\n"
+                }
+            ]
+        },
+        "preview": "cccccstartccccc\n",
+        "isStarred": "false",
+        "isDeleted": "false",
+        "id": 1574028029296,
+        "year": 2019,
+        "month": 10,
+        "date": 17,
+        "hours": 22,
+        "minutes": 55,
+        "seconds": 8
+    }
+]
