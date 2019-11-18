@@ -1,15 +1,16 @@
 let noteList;
+let searchString;
 
 window.addEventListener('load', function () {
     // ...
     // Hämta data från localStorage
     loadNotes(); // hämtar arrayen från localstorage och läser in i noteList
-    noteList.forEach(renderNote);
+    bigList.forEach(renderNote);
 });
 
 function renderNotes(func = () => true) {
     document.querySelector("ul#preview").innerHTML = "";
-    noteList.filter(func).forEach(renderNote);
+    bigList.filter(func).forEach(renderNote);
 }
 function onlyFavs(note) {
     return note.favourite
@@ -19,6 +20,20 @@ function filterEvenIDs(note) {
     return (note.id % 2 === 0)
 }
 
+function textSearch(note) {
+    let ops = note.text.ops;
+
+    for (let i = 0; i < ops.length; i++) {
+        console.log(ops[i].insert.includes(searchString));
+        if (ops[i].insert.toLowerCase().includes(searchString)) {
+
+            return true;
+        }
+
+    }
+
+    return false;
+}
 function newItem() {
     var item = document.querySelector("input#input").value;
     var ul = document.querySelector("ul#list");
@@ -31,10 +46,14 @@ function newItem() {
     li.onclick = removeItem;
 }
 
-document.body.onkeyup = function (e) {
+document.querySelector("input#input").onkeyup = function (e) {
     if (e.keyCode == 13) {
         newItem();
         saveNotes();
+    } else {
+        searchString = document.querySelector("input#input").value.toLowerCase();
+        //console.log(searchString);
+        renderNotes(textSearch)
     }
 };
 
@@ -79,7 +98,7 @@ function renderNote(note) {
     var ul = document.querySelector("ul#preview");
     var li = document.createElement("li");
 
-    li.appendChild(document.createTextNode("- " + note.id));
+    li.appendChild(document.createTextNode("- " + note.preview));
     ul.appendChild(li);
 
     //li.onclick = removeItem;
@@ -114,11 +133,11 @@ let bigList = [
                     "insert": "bbbbb\n"
                 },
                 {
-                    "insert": "starbbbbb\n"
+                    "insert": "Starbbbbb\n"
                 },
             ]
         },
-        "preview": "bbbbbbstar\n",
+        "preview": "bbbbbbStar\n",
         "isStarred": "false",
         "isDeleted": "false",
         "id": 1574027717863,
@@ -134,11 +153,11 @@ let bigList = [
         "text": {
             "ops": [
                 {
-                    "insert": "cccccstartccccc\n"
+                    "insert": "cccccstARtccccc\n"
                 }
             ]
         },
-        "preview": "cccccstartccccc\n",
+        "preview": "cccccstARtccccc\n",
         "isStarred": "false",
         "isDeleted": "false",
         "id": 1574028029296,
